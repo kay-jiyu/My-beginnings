@@ -19,32 +19,31 @@ int main(void)
 
         printf("Votre équation est %dx² + %dx + %d = 0\n", a, b, c);
 
-        if (a == 0 && b == 0){
-            printf("L'équation n'admet pas de solution.\nSoit SR l'ensemble des solutions dans R, SR:{ }\nMerci d'avoir utilisé ce programme.");
-        }
-        else if(a == 0){
-            x = -c/b;
-            printf("L'equation admet une solution unique x = %.1f, soit SR l'ensemble des solutions dans R, SR:{%.1f}", x ,x);
-        }
-
         
-        if (a != 0){
-            delta = pow(b,2)-(4*a*c);
-            printf("Δ= %2.f\n", delta);
-        }
 
-        if (delta > 0 && a != 0){
-            x1 = (-b+sqrt(delta))/(2*a);
-            x2 = (-b-sqrt(delta))/(2*a);
-            printf("Δ>0 alors l'équation admet deux solutions distinctes X1 et X2 telles que X1= %f et X2= %f\nSoit SR l'ensemble des solutions dans R, SR:{%f;%f}\nMerci d'avoir utilisé ce programme.", x1, x2, x1, x2); 
+    if (a == 0) {
+        if (b == 0) {
+            if (c == 0) {
+                printf("Toutes les valeurs de x sont solutions\n");
+            } else {
+                printf("Pas de solution\n");
+            }
+        } else {
+            printf("Une solution : x = %f\n", -c / b);
         }
-        else if(delta == 0 && a != 0){
-            x0 = (-b)/(2*a);
-            printf("Δ= %2.f, alors l'équation admet une solution unique X0 telle que X0= %.2f\nSoit SR l'ensemble des solutions dans R, SR:{%.2f}\nMerci d'avoir utilisé ce programme.", delta, x0, x0);
+    } else {
+        delta = pow(b,2) - 4 * a * c;
+        printf(" delta = %.2f\n", delta);
+        if (delta > 0) {
+            printf("Deux solutions réelles :\n");
+            printf("x1 = %f\n", (-b + sqrt(delta)) / (2 * a));
+            printf("x2 = %f\n", (-b - sqrt(delta)) / (2 * a));
+        } else if (delta == 0) {
+            printf("Une solution réelle :\n");
+            printf("x = %f\n", -b / (2 * a));
+        } else {
+            printf("Pas de solution réelle\n");
         }
-
-        else if(delta < 0 && a != 0){
-            printf("Δ<0, alors l'équation n'admet aucune solution dans R\nSoit SR l'ensemble des solutions dans R, SR:{ }\nMerci d'avoir utilisé ce programme.");
-        }
+    }
     return(0);
 }
